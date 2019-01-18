@@ -8,20 +8,20 @@ Fill out truth tables for the following expressions:
 ```
 A     B     result
 -------------------
-0     0       ?
-0     1       ?
-1     0       ?
-1     1       ?
+0     0       0
+0     1       0
+1     0       1
+1     1       0
 ```
 
 2. `(¬A ∨ B) ∧ ¬(A ∧ ¬B)`   (alternate: `(!A || B) && !(A && !B)`)
 ```
 A     B     result
 -------------------
-0     0       ?
-0     1       ?
-1     0       ?
-1     1       ?
+0     0       1
+0     1       1
+1     0       0
+1     1       1
 ```
 
 3. `¬(A ∧ B) ∨ ( (A ∧ C) ∧ ¬(B ∨ ¬C) )`   (alternate: `!(A && B) || ( (A && C) && !(B || !C) )`)
@@ -29,14 +29,14 @@ A     B     result
 ```
 A     B     C     result
 -------------------------
-0     0     0       ?
-0     0     1       ?
-0     1     0       ?
-0     1     1       ?
-1     0     0       ?
-1     0     1       ?
-1     1     0       ?
-1     1     1       ?
+0     0     0       1
+0     0     1       1
+0     1     0       1
+0     1     1       1
+1     0     0       1
+1     0     1       1
+1     1     0       0
+1     1     1       1
 ```
 
 ## STRETCH GOAL
@@ -54,8 +54,8 @@ A     B     CARRY   SUM
 ```
 This can be represented with boolean algebra like so:
 
-* `SUM = A ⊕ B`  (alternate: `A ^ B` or `A xor B`)
-* `CARRY = A ∧ B`  (alternate: `A && B`)
+* `SUM = A ⊕ B`  (alternate: `A ^ B` or `A xor B`) A xor B xor C
+* `CARRY = A ∧ B`  (alternate: `A && B`) A && B && C
 
 
 How can you represent the SUM and CARRY of adding THREE digits with a truth table and in boolean algebra?
@@ -64,14 +64,14 @@ How can you represent the SUM and CARRY of adding THREE digits with a truth tabl
 ```
 A     B     C      carry   sum
 --------------------------------
-0     0     0        ?      ?
-0     0     1        ?      ?
-0     1     0        ?      ?
-0     1     1        ?      ?
-1     0     0        ?      ?
-1     0     1        ?      ?
-1     1     0        ?      ?
-1     1     1        ?      ?
+0     0     0        0      0
+0     0     1        0      1
+0     1     0        0      1
+0     1     1        0      0
+1     0     0        0      1
+1     0     1        0      0
+1     1     0        0      0
+1     1     1        1      1
 ```
-* SUM = ?
-* CARRY = ?
+* SUM =  A ⊕ B ⊕ C = A XOR B
+* CARRY = Q = A . B . C = A && B && C
