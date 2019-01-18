@@ -6,9 +6,41 @@
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   HashTable *ht = create_hash_table(16);
+for(int i; i<length;i++){
+for(int y;y<length;y++){
+if (weights[i] + weights[y] == limit){
+ LinkedPair *current_pair;
+ for(int t;t<ht->capacity;t++){
+   current_pair = ht->storage[t];
+ if(weights[y] == hash_table_retrieve(ht,current_pair->key)){
+    Answer*ans;
+    ans = hash_table_retrieve(ht,current_pair->key);
+    ans -> index_1 = current_pair->value;
+   return ans;
+ };
+ if(weights[i] == hash_table_retrieve(ht,current_pair->key)){
+  Answer*ans;
+  ans = hash_table_retrieve(ht,current_pair->key);
+    ans -> index_2 = current_pair->value;
+   return ans;
+ };
+ }
+  
 
-  // YOUR CODE HERE
-
+ 
+ 
+ 
+  }else{
+    return NULL;
+  }
+    
+  
+  
+  }
+  
+}
+  //  When calling `hash_table_retrieve` with a key that doesn't exist in the hash table, `hash_table_retrieve` will return -1.
+  
   return NULL;
 }
 
