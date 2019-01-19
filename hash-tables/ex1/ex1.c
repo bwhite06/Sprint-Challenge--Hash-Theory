@@ -6,42 +6,32 @@
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   HashTable *ht = create_hash_table(16);
-for(int i; i<length;i++){
-for(int y;y<length;y++){
-if (weights[i] + weights[y] == limit){
- LinkedPair *current_pair;
-for(int t;t<ht->capacity;t++){
-   current_pair = ht->storage[t];
-  int htr = hash_table_retrieve(ht,current_pair->key);
- if(weights[y] == htr){
-    Answer*ans;
-   ans->index_1 = y;
 
- };
- if(weights[i] == htr){
-    Answer*ans;
-    ans->index_2 = i;
+for(int i=0; i<length;i++){
+  for(int y=0;y<length;y++){
+while(weights[i] + weights[y] == limit){
+  int htr1 = hash_table_retrieve(ht,weights[i]);
+  int htr2 = hash_table_retrieve(ht,weights[y]);
+  Answer*ans = malloc(sizeof(ans));
   
- };
- }
   
-
- 
- 
- 
-  }else{
+  ans -> index_1 = y;
+  ans -> index_2 = i;
+  return ans;
+  if(htr1==-1&&htr2==-1){
     return NULL;
   }
-    
-  
-  
-  }
-  
+ 
+
+ free(ans);
+ }
+  }  
+}
+return NULL;
 }
   //  When calling `hash_table_retrieve` with a key that doesn't exist in the hash table, `hash_table_retrieve` will return -1.
   
-  return NULL;
-}
+
 
 void print_answer(Answer *answer)
 {
